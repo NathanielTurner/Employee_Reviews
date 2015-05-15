@@ -5,8 +5,8 @@ class Employee
   def initialize(name, email, phone, pay)
     @name = name
     @email = email
-    @phone = phone
-    @pay = pay
+    @phone = phone.to_i
+    @pay = pay.to_f
   end
 
 #array.map &:name

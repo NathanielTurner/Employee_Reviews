@@ -11,4 +11,12 @@ class Department
     @staff << who
   end
 
+  def staff_pay
+    total = 0
+    staff.each do |who|
+      total += who.pay
+    end
+    return total
+  end
+
 end

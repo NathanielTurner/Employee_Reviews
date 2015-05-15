@@ -48,7 +48,7 @@ class ReviewsTest < Minitest::Test
     z = Employee.new("Emily", "my.mail", 919602, 80000)
     x.add(y)
     x.add(z)
-    assert_equal 50080000, x.total
+    assert_equal 50080000, x.staff_pay
   end
 
   def test_
