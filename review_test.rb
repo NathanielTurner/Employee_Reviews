@@ -76,7 +76,7 @@ class ReviewsTest < Minitest::Test
     y.add_review("your doing terrible, go get fired, on the other hand, nice job doing terrible, your so fantastic at it that im not going to fire you anymore.")
     assert_equal ["terrible", "terrible"], x.interpret(x.staff[0])
   end
-"hi"
+
   def test_
   end
 

@@ -10,7 +10,7 @@ class Department
   def add(who)
     @staff << who
   end
-"hi"
+
   def staff_pay
     total = 0
     staff.each do |who|
@@ -23,6 +23,5 @@ class Department
     found = who.review.scan(/#{what}/)
     return found
   end
-
-hi
+  
 end
