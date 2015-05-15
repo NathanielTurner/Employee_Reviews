@@ -69,7 +69,12 @@ class ReviewsTest < Minitest::Test
     assert_equal "good", y.performance
   end
 
-  def test_
+  def test_reviews_can_be_checked_for_keywords
+    x = Department.new("sleeplessRus")
+    y = Employee.new("Nate", "my.mail", 919602, 50000000)
+    x.add(y)
+    y.add_review("your doing terrible, go get fired, on the other hand, nice job doing terrible, your so fantastic at it that im not going to fire you anymore.")
+    assert_equal ["terrible", "terrible"], x.interpret(x.shift[0])
   end
 
   def test_
