@@ -19,4 +19,10 @@ class Department
     return total
   end
 
+  def interpret(who, what:"terrible")
+    found = who.review.scan(/#{what}/)
+    return found
+  end
+
+
 end
