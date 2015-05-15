@@ -35,7 +35,11 @@ class ReviewsTest < Minitest::Test
     assert_equal "sleeplessRus", x.name
   end
 
-  def test_
+  def test_departments_can_have_employees
+    x = Department.new("sleeplessRus")
+    y = Employee.new("nate", "my.mail", 919602, 50000)
+    x.add(y)
+    assert x.staff.include?(y)
   end
 
   def test_
