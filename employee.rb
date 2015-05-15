@@ -15,6 +15,10 @@ class Employee
     @review = text
   end
 
+  def set_performance(what_to)
+    @performance = what_to
+  end
+
 
 #array.map &:name
 #assert_in_delta 129.95/3, the_price.price, 0.01  asserts the answers = within the range of 1 cent
