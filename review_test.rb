@@ -58,7 +58,9 @@ class ReviewsTest < Minitest::Test
     y.review
   end
 
-  def test_
+  def test_employees_have_performances
+    y = Employee.new("Nate", "my.mail", 919602, 50000000)
+    assert_equal "N.A", y.performance
   end
 
   def test_
