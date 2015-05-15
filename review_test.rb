@@ -42,7 +42,13 @@ class ReviewsTest < Minitest::Test
     assert x.staff.include?(y)
   end
 
-  def test_
+  def test_department_staff_salaries_can_be_totaled
+    x = Department.new("sleeplessRus")
+    y = Employee.new("Nate", "my.mail", 919602, 50000000)
+    z = Employee.new("Emily", "my.mail", 919602, 80000)
+    x.add(y)
+    x.add(z)
+    assert_equal 50080000, x.total
   end
 
   def test_
