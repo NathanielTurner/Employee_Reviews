@@ -1,18 +1,14 @@
 class Department
 
-  attr_reader :name
+  attr_reader :name, :staff
 
   def initialize(name)
     @name = name
-    @employees = []
+    @staff = []
   end
 
-  def total_salary
-    total = 0
-    @employees.each do |a|
-      total += a.pay_is?
-    end
-    return total
+  def add(who)
+    @staff << who
   end
-  
+
 end
