@@ -53,7 +53,9 @@ class ReviewsTest < Minitest::Test
 
   def test_employees_can_receive_reviews
     y = Employee.new("Nate", "my.mail", 919602, 50000000)
-    y.add_review()
+    y.add_review("your doing terrible, go get fired, on the other hand, nice job doing terrible, your so fantastic at it that im not going to fire you anymore.")
+    assert_equal "your doing terrible, go get fired, on the other hand, nice job doing terrible, your so fantastic at it that im not going to fire you anymore.",
+    y.review
   end
 
   def test_
