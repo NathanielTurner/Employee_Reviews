@@ -51,7 +51,9 @@ class ReviewsTest < Minitest::Test
     assert_equal 50080000, x.staff_pay
   end
 
-  def test_
+  def test_employees_can_receive_reviews
+    y = Employee.new("Nate", "my.mail", 919602, 50000000)
+    y.add_review()
   end
 
   def test_
