@@ -1,7 +1,13 @@
 # Employee Reviews
 
-## Time estimate
+## Time Estimates
 
-* Part One -
+* Part One - Five Hours
 * Part Two -
 * Part Three -
+
+## Actual Times
+
+* Part One
+* Part Two
+* Part Three
