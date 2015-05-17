@@ -11,13 +11,15 @@ class Employee
     @performance = "N.A"
   end
 
-  def add_review(text)
-    @review = text
+  def give_review(text)
+    @review = File.open("#{text}", "rb").read
   end
 
-  def set_performance(what_to)
+  def make_performance(what_to)
     @performance = what_to
   end
+
+
 
 
 #array.map &:name

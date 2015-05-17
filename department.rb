@@ -4,24 +4,22 @@ class Department
 
   def initialize(name)
     @name = name
-    @staff = []
+    @staff = {}
   end
 
   def add(who)
-    @staff << who
+    @staff[who.name.to_sym] = who
   end
 
   def staff_pay
     total = 0
-    staff.each do |who|
-      total += who.pay
-    end
+    @staff.each_value {|a| total += a.pay}
     return total
   end
 
-  def interpret(who, what:"terrible")
-    found = who.review.scan(/#{what}/)
+  def interpret(what, for_what)
+    found = what.scan(/#{for_what}/)
     return found
   end
-  
+
 end
