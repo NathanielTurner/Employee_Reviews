@@ -19,6 +19,9 @@ class Employee
     @performance = what_to
   end
 
+  def raise_pay(to_what)
+    @pay /= to_what
+  end
 
 
 
