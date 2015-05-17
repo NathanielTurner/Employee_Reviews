@@ -83,4 +83,15 @@ class ReviewsTest < Minitest::Test
     assert_in_delta 50000000/0.95, y.pay, 0.01
   end
 
+  def test_departments_can_raise_across_the_board
+    x = Department.new("sleeplessRus")
+    y = Employee.new("Nate", "my.mail", 919602, 50000)
+    z = Employee.new("Emily", "my.mail", 919602, 80000)
+    x.add(y)
+    x.add(z)
+    department.distribute(5000)
+    assert_in_delta 82500, z.pay, 0.01
+    assert_in_delta 135000, x.staff_pay, 0.01
+  end
+
 end
