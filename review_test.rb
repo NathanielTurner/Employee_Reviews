@@ -94,4 +94,8 @@ class ReviewsTest < Minitest::Test
     assert_in_delta (80000/0.95)+(50000/0.95), x.staff_pay, 0.01
   end
 
+  def test_review_analyzer_exists
+    assert Determiner
+  end
+  
 end
