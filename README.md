@@ -8,6 +8,6 @@
 
 ## Actual Times
 
-* Part One
+* Part One - 7.5 Hours
 * Part Two
 * Part Three
