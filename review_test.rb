@@ -39,7 +39,7 @@ class ReviewsTest < Minitest::Test
     x = Department.new("sleeplessRus")
     y = Employee.new("nate", "my.mail", 919602, 50000)
     x.add(y)
-    assert x.staff.include?(y)
+    assert_equal y, x.staff[:nate]
   end
 
   def test_department_staff_salaries_can_be_totaled
@@ -53,8 +53,8 @@ class ReviewsTest < Minitest::Test
 
   def test_employees_can_receive_reviews
     y = Employee.new("Nate", "my.mail", 919602, 50000000)
-    y.add_review("your doing terrible, go get fired, on the other hand, nice job doing terrible, your so fantastic at it that im not going to fire you anymore.")
-    assert_equal "your doing terrible, go get fired, on the other hand, nice job doing terrible, your so fantastic at it that im not going to fire you anymore.",
+    y.give_review("./negative_two.txt")
+    assert_equal File.open("./negative_two.txt", "rb").read, y.review
     y.review
   end
 
@@ -65,7 +65,7 @@ class ReviewsTest < Minitest::Test
 
   def test_performace_can_be_assigned
     y = Employee.new("Nate", "my.mail", 919602, 50000000)
-    y.set_performance("good")
+    y.make_performance("good")
     assert_equal "good", y.performance
   end
 
@@ -73,8 +73,8 @@ class ReviewsTest < Minitest::Test
     x = Department.new("sleeplessRus")
     y = Employee.new("Nate", "my.mail", 919602, 50000000)
     x.add(y)
-    y.add_review("your doing terrible, go get fired, on the other hand, nice job doing terrible, your so fantastic at it that im not going to fire you anymore.")
-    assert_equal ["terrible", "terrible"], x.interpret(x.staff[0])
+    y.give_review("./negative_two.txt")
+    assert_equal ["has", "has", "has"], x.interpret(y.review, "has")
   end
 
   def test_
