@@ -22,4 +22,8 @@ class Department
     return found
   end
 
+  def distribute(amount)
+    @staff.each_value {|a| a.raise_pay(amount)}
+  end
+
 end

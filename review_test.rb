@@ -89,9 +89,9 @@ class ReviewsTest < Minitest::Test
     z = Employee.new("Emily", "my.mail", 919602, 80000)
     x.add(y)
     x.add(z)
-    department.distribute(5000)
-    assert_in_delta 82500, z.pay, 0.01
-    assert_in_delta 135000, x.staff_pay, 0.01
+    x.distribute(0.95)
+    assert_in_delta 80000/0.95, z.pay, 0.01
+    assert_in_delta (80000/0.95)+(50000/0.95), x.staff_pay, 0.01
   end
 
 end
