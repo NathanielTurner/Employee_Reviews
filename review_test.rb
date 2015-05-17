@@ -77,7 +77,10 @@ class ReviewsTest < Minitest::Test
     assert_equal ["has", "has", "has"], x.interpret(y.review, "has")
   end
 
-  def test_
+  def test_employees_can_recieve_raises
+    y = Employee.new("Nate", "my.mail", 919602, 50000000)
+    y.raise_pay(0.95)
+    assert_in_delta 50000000/0.95, y.pay, 0.01
   end
 
 end
