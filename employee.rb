@@ -21,6 +21,7 @@ class Employee
 
   def raise_pay(to_what, deserve: nil)
     unless deserve == "poor"
+      yield if block_given?
       @pay /= to_what
     end
   end

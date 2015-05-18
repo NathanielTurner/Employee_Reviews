@@ -25,7 +25,7 @@ class Department
   end
 
   def distribute(amount)
-    @staff.each_value {|a| a.raise_pay(amount, deserve: a.performance)}
+    @staff.each_value {|a| a.raise_pay(amount, deserve: a.performance) |b| if a.pay < 51000}
   end
 
 end
