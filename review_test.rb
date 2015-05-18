@@ -81,7 +81,7 @@ class ReviewsTest < Minitest::Test
     z = Employee.new("Emily", "my.mail", 919602, 80000)
     x.add(y)
     x.add(z)
-    x.distribute(0.95)
+    x.distribute(0.95, everyone: true)
     assert_in_delta 80000/0.95, z.pay, 0.01
     assert_in_delta (80000/0.95)+(50000/0.95), x.staff_pay, 0.01
   end
@@ -129,11 +129,13 @@ class ReviewsTest < Minitest::Test
     x.evaluate(z)
     x.evaluate(a)
     x.evaluate(b)
-    x.distribute(0.95)
+    x.distribute(0.95) {|who| who.pay < 51000}
     assert_equal 15000, b.pay
     assert_equal 56000, a.pay
-    assert_in_delta 52000 / 0.95, z.pay, 0.01
+    assert_in_delta 52000, z.pay, 0.01
     assert_in_delta 50000 / 0.95, y.pay, 0.01
   end
+
+
 
 end

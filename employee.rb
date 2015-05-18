@@ -19,10 +19,9 @@ class Employee
     @performance = what_to
   end
 
-  def raise_pay(to_what, deserve: nil)
-    unless deserve == "poor"
-      yield if block_given?
-      @pay /= to_what
+  def raise_pay(to_what)
+    unless @performance == "poor"
+        @pay /= to_what
     end
   end
 

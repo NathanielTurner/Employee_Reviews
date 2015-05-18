@@ -24,8 +24,16 @@ class Department
     for_who.make_performance(Determiner.new(for_who.review).analyze)
   end
 
-  def distribute(amount)
-    @staff.each_value {|a| a.raise_pay(amount, deserve: a.performance) |b| if a.pay < 51000}
+  def distribute(percentage, everyone:false)
+    unless everyone == true
+      @staff.each_value do |a|
+        if yield(a)
+          a.raise_pay(percentage)
+        end
+      end
+    else
+      @staff.each_value {|a| a.raise_pay(percentage)}
+    end
   end
 
 end
