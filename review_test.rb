@@ -112,6 +112,25 @@ class ReviewsTest < Minitest::Test
   end
 
   def test_only_give_raises_to_satisfactory_employees
+    x = Department.new("sleeplessRus")
+    y = Employee.new("Nate", "my.mail", 919606, 50000)
+    z = Employee.new("boby", "notmy.mail", 919604, 52000)
+    a = Employee.new("billy", "normy.mail", 919603, 56000)
+    b = Employee.new("tinkles", "ormy.mail", 919608, 15000)
+    x.add(y)
+    y.give_review("positive_one.txt")
+    z.give_review("positive_two.txt")
+    a.give_review("negative_one.txt")
+    b.give_review("negative_two.txt")
+    x.evaluate(y)
+    x.evaluate(z)
+    x.evaluate(a)
+    x.evaluate(b)
+    x.distribute(0.95)
+    assert_equal 15000, b.pay
+    assert_equal 56000, a.pay
+    assert_in_delta 52000 / 0.95, z.pay, 0.01
+    assert_in_delta 50000 / 0.95, y.pay, 0.01
   end
 
 end
