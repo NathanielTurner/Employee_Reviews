@@ -69,14 +69,6 @@ class ReviewsTest < Minitest::Test
     assert_equal "good", y.performance
   end
 
-  def test_reviews_can_be_interpreted
-    x = Department.new("sleeplessRus")
-    y = Employee.new("Nate", "my.mail", 919602, 50000000)
-    x.add(y)
-    y.give_review("./negative_two.txt")
-    assert_equal ["has", "has", "has"], x.interpret(y.review, "has")
-  end
-
   def test_employees_can_recieve_raises
     y = Employee.new("Nate", "my.mail", 919602, 50000000)
     y.raise_pay(0.95)
@@ -97,5 +89,29 @@ class ReviewsTest < Minitest::Test
   def test_review_analyzer_exists
     assert Determiner
   end
-  
+
+  def test_determiner_can_determine_correctly
+    x = Department.new("sleeplessRus")
+    y = Employee.new("Nate", "my.mail", 919606, 50000)
+    z = Employee.new("boby", "notmy.mail", 919604, 52000)
+    a = Employee.new("billy", "normy.mail", 919603, 56000)
+    b = Employee.new("tinkles", "ormy.mail", 919608, 15000)
+    x.add(y)
+    y.give_review("positive_one.txt")
+    z.give_review("positive_two.txt")
+    a.give_review("negative_one.txt")
+    b.give_review("negative_two.txt")
+    x.evaluate(y)
+    x.evaluate(z)
+    x.evaluate(a)
+    x.evaluate(b)
+    assert_equal "satisfactory", y.performance
+    assert_equal "satisfactory", z.performance
+    assert_equal "poor", a.performance
+    assert_equal "poor", b.performance
+  end
+
+  def test_only_give_raises_to_satisfactory_employees
+  end
+
 end
