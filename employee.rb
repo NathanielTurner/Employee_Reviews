@@ -19,8 +19,10 @@ class Employee
     @performance = what_to
   end
 
-  def raise_pay(to_what)
-    @pay /= to_what
+  def raise_pay(to_what, deserve: nil)
+    unless deserve == "poor"
+      @pay /= to_what
+    end
   end
 
 
