@@ -1,3 +1,6 @@
+require "./determiner.rb"
+require "./employee.rb"
+
 class Department
 
   attr_reader :name, :staff
@@ -17,9 +20,8 @@ class Department
     return total
   end
 
-  def interpret(what, for_what)
-    found = what.scan(/#{for_what}/)
-    return found
+  def evaluate(for_who)
+    for_who.make_performance(Determiner.new(for_who.review).analyze)
   end
 
   def distribute(amount)
